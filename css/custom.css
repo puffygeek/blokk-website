@@ -1,0 +1,58 @@
+body {
+    background: url('../img/bg.png') no-repeat;
+    background-size: contain;
+}
+
+@media only screen and (max-width: 1024px) {
+    body {
+        background-size: 1024px;
+    }
+}
+
+.header {
+    color: #fff;
+}
+
+.footer {
+    background: #f3f3f3;
+    font-size: 12px;
+    line-height: 32px;
+}
+
+.footer .section-footer {
+    font-family: Arial;
+    line-height: 40px;
+    font-weight: bold;
+    color: #333;
+}
+
+.footer a {
+    color: #999;
+}
+
+.footer-lower {
+    background: #fafafa;
+}
+
+.code-box {
+    background: #eee;
+    padding: 20px;
+}
+
+
+
+/* pricing */
+#pay_as_you_go {
+    background-color: #72e0fb;
+    padding: 20px;
+}
+
+#silver {
+    background-color: #c7c7c7;
+    padding: 20px;
+}
+
+#gold {
+    background-color: #ffcd00;
+    padding: 20px;
+}
