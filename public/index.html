@@ -35,7 +35,7 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#">Developers</a></li>
 
-                <li class="nav-item show" id="user-not-authenticated">
+                <li class="nav-item" id="user-not-authenticated">
                     <a id="firebase-sign-in" class="nav-link" href="#">Signin/up</a>
                     <div id="firebaseui-auth-container"></div>
                 </li>
@@ -265,7 +265,7 @@ db.set('foo', 'bar');</code></pre>
 </script>
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-<script src="js/script.js"></script>
+<script src="js/firebase-login.js"></script>
 
 <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css"/>
@@ -281,44 +281,6 @@ db.set('foo', 'bar');</code></pre>
     storageBucket: 'blokk-12345.appspot.com',
     messagingSenderId: '997993385299'
   }
-
-
-
-  firebase.initializeApp(config)
-
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      showAuthenticatedUser(user)
-    } else {
-      hideAuthenticatedUser()
-    }
-  })
-
-  var uiConfig = {
-    signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
-  }
-  // Initialize the FirebaseUI Widget using Firebase.
-  var ui = new firebaseui.auth.AuthUI(firebase.auth())
-
-  $('#firebase-sign-in').click(function (event) {
-    ui.start('#firebaseui-auth-container', uiConfig)
-    showFirebaseLoginWindow()
-  })
-
-  $('#firebase-sign-out').click(function (event) {
-    firebase.auth().signOut()
-    event.stopPropagation()
-  })
-
-  $(window).click(function () {
-    hideFirebaseLoginWindow()
-  })
-
-  $('#firebaseui-auth-container').click(function (event) {
-    event.stopPropagation()
-  })
-
-
 </script>
 </body>
 </html>
