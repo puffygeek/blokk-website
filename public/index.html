@@ -40,7 +40,9 @@
                     <div id="firebaseui-auth-container"></div>
                 </li>
                 <li class="nav-item hide" id="user-authenticated">
-                    <a class="nav-link" href="#welcome">Welcome <div id="user-authenticated-name">name</div></a>
+                    <a class="nav-link" href="#welcome">Welcome
+                        <div id="user-authenticated-name">name</div>
+                    </a>
                 </li>
                 <li class="nav-item hide" id="user-authenticated-signout">
                     <a class="nav-link" href="#signout" id="firebase-sign-out">Signout</a>
@@ -262,6 +264,7 @@ db.set('foo', 'bar');</code></pre>
   })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=')
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script src="js/script.js"></script>
 
@@ -279,47 +282,42 @@ db.set('foo', 'bar');</code></pre>
     storageBucket: 'blokk-12345.appspot.com',
     messagingSenderId: '997993385299'
   }
+
+
+
   firebase.initializeApp(config)
 
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      console.log("logged in");
-      showAuthenticatedUser(user);
+      showAuthenticatedUser(user)
     } else {
-      hideAuthenticatedUser();
+      hideAuthenticatedUser()
     }
-  });
+  })
 
   var uiConfig = {
-    // replace this with the right folder
-    signInSuccessUrl: 'file:///Users/federicoulfo/blokk/website/public/index.html',
-    signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-    // Terms of service url.
-    tosUrl: 'terms.html'
+    signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID]
   }
   // Initialize the FirebaseUI Widget using Firebase.
-  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  var ui = new firebaseui.auth.AuthUI(firebase.auth())
 
-  $('#firebase-sign-in').click( function(event) {
-    ui.start('#firebaseui-auth-container', uiConfig);
-    showFirebaseLoginWindow();
-  });
+  $('#firebase-sign-in').click(function (event) {
+    ui.start('#firebaseui-auth-container', uiConfig)
+    showFirebaseLoginWindow()
+  })
 
-  $('#firebase-sign-out').click( function(event) {
-    hideFirebaseLoginWindow();
-  });
+  $('#firebase-sign-out').click(function (event) {
+    firebase.auth().signOut()
+    event.stopPropagation()
+  })
 
+  $(window).click(function () {
+    hideFirebaseLoginWindow()
+  })
 
-  $(window).click(function() {
-    hideFirebaseLoginWindow();
-  });
-
-  $('#firebaseui-auth-container').click(function(event){
-    event.stopPropagation();
-  });
-
+  $('#firebaseui-auth-container').click(function (event) {
+    event.stopPropagation()
+  })
 
 
 </script>

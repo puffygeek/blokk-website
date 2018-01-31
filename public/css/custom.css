@@ -85,3 +85,7 @@ body#login-page {
     min-width: 300px;
     right: 0px;
 }
+
+#user-authenticated-name {
+    display: inline;
+}
