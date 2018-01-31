@@ -3,6 +3,11 @@ body {
     background-size: contain;
 }
 
+body#login-page {
+    background: url('../img/bg-login.png') no-repeat;
+    background-size: contain;
+}
+
 @media only screen and (max-width: 1024px) {
     body {
         background-size: 1024px;
@@ -55,4 +60,28 @@ body {
 #gold {
     background-color: #ffcd00;
     padding: 20px;
+}
+
+
+#user-not-authenticated {
+    position: relative;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+#firebase-sign-in {
+    position: relative;
+}
+
+#firebaseui-auth-container {
+    position: absolute;
+    width: 100%;
+    min-width: 300px;
+    right: 0px;
 }
